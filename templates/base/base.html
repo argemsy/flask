@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Flask | {{ title }}</title>
+	{% block stylesheet %}
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="/static/css/google/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	{% endblock stylesheet %}
+	{% block extra_stylesheet %}{% endblock extra_stylesheet %}
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed page-with-wide-sidebar page-with-light-sidebar">
+		<!-- begin #header -->
+		<div id="header" class="header navbar-default">
+			<!-- begin navbar-header -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed navbar-toggle-left" data-click="sidebar-minify">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="index.html" class="navbar-brand">
+					<b class="mr-1">Flask</b> !!!
+				</a>
+				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- end navbar-header -->
+			<!-- begin header-nav -->
+			<ul class="navbar-nav d-flex flex-grow-1">
+				{% block navbar%}
+					{% include 'base/navbar.html' %}
+				{% endblock navbar %}
+			</ul>
+			<!-- end header-nav -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			{% block sidebar %}
+				{% include 'base/sidebar.html' %}
+			{% endblock sidebar %}
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;" class="time"></a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">{{ title }} <small>{{ sub_title }}</small></h1>
+			<!-- end page-header -->
+			{% block content %}
+			<!-- begin panel -->
+
+			<!-- end panel -->
+			{% endblock content %}
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	{% block javascript %}
+	<!-- end page container -->
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/static/js/app.min.js"></script>
+	<script src="/static/js/theme/google.min.js"></script>
+	<script src="/javascript"></script>
+	<script src="/static/scripts/base.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	{% endblock javascript %}
+	{% block extra_javascript %}{% endblock extra_javascript %}
+</body>
+</html>
